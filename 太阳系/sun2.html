@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5实现太阳系</title>
+</head>
+<body  style="background: black;">
+	<canvas id="canvas" width="1000" height="1000" style="background: black;" >
+		浏览器不支持
+	</canvas>
+	<script type="text/javascript">
+		var canvas=document.getElementById("canvas");
+		var cxt=canvas.getContext("2d");
+
+		// 轨道
+		function drawTrack(){
+			for(var i=0;i<8;i++){
+				cxt.beginPath();
+				cxt.arc(500, 500, (i+1)*50, 0, 360, false);
+				cxt.closePath();
+				cxt.strokeStyle="#fff";
+				cxt.stroke();
+			}
+		}
+		// 星球
+		function star(x,y,radius,cycle,scolor,ecolor){
+			this.x=x;
+			this.y=y;
+			this.radius=radius;
+			this.scolor=scolor;
+			this.ecolor=ecolor;
+			this.color=null;
+			this.time=0;
+			this.draw=function(){
+				cxt.save();
+				cxt.translate(500, 500);
+				cxt.rotate(this.time*(360/cycle)*Math.PI/180);
+				cxt.beginPath();
+				cxt.arc(this.x, this.y, this.radius, 0, 360, false);
+				cxt.closePath();
+				this.color=cxt.createRadialGradient(this.x, this.y, 0, this.x, this.y, this.radius);
+				this.color.addColorStop(0, scolor);
+				this.color.addColorStop(1, ecolor);
+				cxt.fillStyle=this.color;
+				cxt.fill();
+				cxt.restore();
+				this.time++;
+			}
+		}
+
+		function Sun(){
+			star.call(this,0,0,20,0,"#f00","#f90");
+		}
+
+		function Mercury(){
+			star.call(this,0,-50,10,87.70,"#a69697","#5c3e40");
+		}
+		function Venus(){
+			star.call(this,0,-100,10,224.701,"#c4bbac","#1f1315");
+		}
+		function Earth(){
+			star.call(this,0,-150,10,365.24,"#78b1e8","#050c12");
+		}
+		function Mars(){
+			star.call(this,0,-200,10,686.98,"#cec986","#76422d");
+		}
+		function Jupiter(){
+			star.call(this,0,-250,10,4332.589,"#c0a48e","#322222");
+		}
+		function Satum(){
+			star.call(this,0,-300,10,10759.5,"#f7f9e3","#5c4533");
+		}
+		function Uranus(){
+			star.call(this,0,-350,10,30799.095,"#a7e1e5","#19243a");
+		}
+		function Neptune(){
+			star.call(this,0,-400,10,60152,"#0661b2","#1e3b73");
+		}
+
+		
+			var sun= new Sun();
+			var mercury=new Mercury();
+			var venus=new Venus();
+			var earth=new Earth();
+			var mars=new Mars();
+			var jupiter=new Jupiter();
+			var satum=new Satum();
+			var uranus=new Uranus();
+			var neptune=new Neptune();
+			sun.draw();
+		function draw(){
+			cxt.clearRect(0, 0, 1000, 1000);
+			drawTrack();
+			mercury.draw();
+			venus.draw();
+			earth.draw();
+			mars.draw();
+			jupiter.draw();
+			satum.draw();
+			uranus.draw();
+			neptune.draw();
+		}
+
+		setInterval(draw,10);
+
+
+		/*var time = 0;
+		function draw(){
+			
+			cxt.clearRect(0, 0, 1000, 1000);
+			cxt.strokeStyle="#fff";
+			cxt.beginPath();
+			cxt.arc(500, 500, 100, 0, 360, false);
+			cxt.closePath();
+			cxt.stroke();
+			// 太阳
+			cxt.beginPath();
+			cxt.arc(500, 500, 20, 0, 360, false);
+			cxt.closePath();
+
+			var sunColor = cxt.createRadialGradient(500, 500, 0, 500, 500, 20);
+			sunColor.addColorStop(0, "red");
+			sunColor.addColorStop(1, "gold");
+			cxt.fillStyle=sunColor;
+			cxt.fill();
+			// 地球
+			cxt.save();
+			cxt.translate(500, 500);
+			cxt.rotate(time*360/365*Math.PI/180);
+			cxt.beginPath();
+			cxt.arc(0, -100, 10, 0, 360, false);
+			cxt.closePath();
+			var earthColor=cxt.createRadialGradient(0, -100, 0, 0, -100, 10);
+			earthColor.addColorStop(0, "#00BFFF");
+			earthColor.addColorStop(1, "blue");
+			cxt.fillStyle=earthColor;
+			cxt.fill();
+			cxt.restore();
+			time+=1;
+		}
+
+		setInterval(draw, 10);*/
+
+	</script>
+</body>
+</html>

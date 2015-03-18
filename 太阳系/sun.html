@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5实现太阳系</title>
+</head>
+<body  style="background: black;">
+	<canvas id="canvas" width="1000" height="1000" style="background: black;" >
+		浏览器不支持
+	</canvas>
+	<script type="text/javascript">
+		var canvas=document.getElementById("canvas");
+		var cxt=canvas.getContext("2d");
+
+		var time = 0;
+		function draw(){
+			
+			cxt.clearRect(0, 0, 1000, 1000);
+			cxt.strokeStyle="#fff";
+			cxt.beginPath();
+			cxt.arc(500, 500, 100, 0, 360, false);
+			cxt.closePath();
+			cxt.stroke();
+			// 太阳
+			cxt.beginPath();
+			cxt.arc(500, 500, 20, 0, 360, false);
+			cxt.closePath();
+
+			var sunColor = cxt.createRadialGradient(500, 500, 0, 500, 500, 20);
+			sunColor.addColorStop(0, "red");
+			sunColor.addColorStop(1, "gold");
+			cxt.fillStyle=sunColor;
+			cxt.fill();
+			// 地球
+			cxt.save();
+			cxt.translate(500, 500);
+			cxt.rotate(time*360/365*Math.PI/180);
+			cxt.beginPath();
+			cxt.arc(0, -100, 10, 0, 360, false);
+			cxt.closePath();
+			var earthColor=cxt.createRadialGradient(0, -100, 0, 0, -100, 10);
+			earthColor.addColorStop(0, "#00BFFF");
+			earthColor.addColorStop(1, "blue");
+			cxt.fillStyle=earthColor;
+			cxt.fill();
+			cxt.restore();
+			time+=1;
+		}
+
+		setInterval(draw, 10);
+
+	</script>
+</body>
+</html>
