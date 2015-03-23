@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>在线画板</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header id="header">
+		<h1>HTML5在线画板</h1>
+	</header>
+	<section id="content">
+		<ul id="tools">
+			<li>
+				<h3>图像</h3><hr>
+				<ul id="image">
+					<li id="iamge_save">
+						<form action="http://localhost/download.php" id="myform" method="post">
+							<input type="hidden" id="data" name="data" value="">	
+							<button onclick="saveImage()" type="button">保存</button></li>
+						</form>
+					<li id="iamge_clear"><button onclick="clearImage()">清空</button></li>
+				</ul>
+			</li>
+			<li>
+				<h3>工具</h3><hr>
+				<ul id="means">
+					<li id="means_Brush" onclick="drawBrush(0)"><img src="images/Brush.png" alt=""></li>
+					<li id="means_Eraser" onclick="drawEraser(1)"><img src="images/Eraser.png" alt=""></li>
+					<li id="means_Paint" onclick="drawPaint(2)"><img src="images/Paint.png" alt=""></li>
+					<li id="means_Straw" onclick="drawStraw(3)"><img src="images/Straw.png" alt=""></li>
+					<li id="means_text" onclick="drawtext(4)"><img src="images/text.png" alt=""></li>
+					<li id="means_Magnifier" onclick="drawMagnifier(5)"><img src="images/Magnifier.png" alt=""></li>
+				</ul>
+			</li>
+			<li>
+				<h3>形状</h3><hr>
+				<ul id="shape">
+					<li id="shape_line" onclick="drawline(6)"><img src="images/line.png" alt=""></li>
+					<li id="shape_arc" onclick="drawarc(7)"><img src="images/arc.png" alt=""></li>
+					<li id="shape_rect" onclick="drawrect(8)"><img src="images/rect.png" alt=""></li>
+					<li id="shape_poly" onclick="drawpoly(9)"><img src="images/poly.png" alt=""></li>
+					<li id="shape_arcfill" onclick="drawarcfill(10)"><img src="images/arcfill.png" alt=""></li>
+					<li id="shape_rectfill" onclick="drawrectfill(11)"><img src="images/rectfill.png" alt=""></li>
+				</ul>
+			</li>
+			<li>
+				<h3>线宽</h3><hr>
+				<ul id="linesize">
+					<li id="linesize_line1px" onclick="setLine(0)"><img src="images/line1px.png" alt=""></li>
+					<li id="linesize_line3px" onclick="setLine(1)"><img src="images/line3px.png" alt=""></li>
+					<li id="linesize_line5px" onclick="setLine(2)"><img src="images/line5px.png" alt=""></li>
+					<li id="linesize_line8px" onclick="setLine(3)"><img src="images/line8px.png" alt=""></li>
+				</ul>
+			</li>
+			<li>
+				<h3>颜色</h3><hr>
+				<ul id="color">
+					<li id="red" onclick="setColor(this,0)"></li>
+					<li id="green" onclick="setColor(this,1)"></li>
+					<li id="blue" onclick="setColor(this,2)"></li>
+					<li id="yellow" onclick="setColor(this,3)"></li>
+					<li id="white" onclick="setColor(this,4)"></li>
+					<li id="black" onclick="setColor(this,5)"></li>
+					<li id="pink" onclick="setColor(this,6)"></li>
+					<li id="purple" onclick="setColor(this,7)"></li>
+					<li id="cyan" onclick="setColor(this,8)"></li>
+					<li id="orange" onclick="setColor(this,9)"></li>
+				</ul>
+			</li>
+		</ul>
+		<canvas id="canvas" width="880" height="400">
+			浏览器不支持
+		</canvas>
+
+		<script type="text/javascript" src="canvas.js"></script>
+	</section>
+	<footer id="footer">
+		<small>版权所有，盗版不究 &copy吴徐彬</small>
+	</footer>
+</body>
+</html>
