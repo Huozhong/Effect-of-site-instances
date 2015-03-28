@@ -13,10 +13,10 @@ a.banner{
 	height:176px;
 	border: 1px solid #555;
 	/*插入多张背景图片使用逗号隔开，最后插入的在最底层*/
-	background: url(../images/banner-arrow.png) no-repeat -100px 140px,
-				url(../images/banner-photo.png) no-repeat -40px 220px,
-				url(../images/banner-09.png) no-repeat -20px -380px,
-				url(../images/banner-bg.png) no-repeat 0 0;
+	background: url(../ad_img/banner-arrow.png) no-repeat -100px 140px,
+				url(../ad_img/banner-photo.png) no-repeat -40px 220px,
+				url(../ad_img/banner-09.png) no-repeat -20px -380px,
+				url(../ad_img/banner-bg.png) no-repeat 0 0;
 
 	transition: background-position .2s ease-in .2s;
 		-moz-transition: background-position .2s ease-in .2s;
